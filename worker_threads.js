@@ -3,6 +3,18 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const urls = require('worker_threads').workerData;
 const fs = require('fs');
+const {client} = require('./mongodb.js');
+// now save the data in the database
+async function saveData(data) {
+    try {
+        await client.connect();
+        await client.db("reviews").collection("headphone_reviews").insertMany(data);
+    } catch (err) {
+        console.log(err);
+    } finally {
+        await client.close();
+    }
+}
 parentPort.postMessage(`Worker ${threadId} started`);
 
 let result = [];
@@ -27,6 +39,7 @@ async function scrapeUrl(url) {
       }
     });
     result.push({ name: name, imgUrl: imgUrl, reviews: reviews });
+    await saveData(result);
     console.log(`Worker ${threadId} finished scraping ${url}`);
   } catch (err) {
     console.log(err);

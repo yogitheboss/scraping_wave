@@ -7,14 +7,12 @@
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
-    "nodemon": "^2.0.22",
-    "openai": "^3.2.1",
-    "pretty": "^2.0.0",
-    "puppeteer": "^20.1.1"
+    "mongodb": "^5.4.0",
+    "openai": "^3.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon main.js"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",

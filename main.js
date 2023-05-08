@@ -1,7 +1,6 @@
 const worker = require('worker_threads');
 const axios = require('axios');
 const cheerio = require('cheerio');
-
 const url_main = "https://www.amazon.in/s?k=headphones&rh=n%3A1389401031&ref=nb_sb_noss";
 async function scrape(website_url) {
     const url = [];
