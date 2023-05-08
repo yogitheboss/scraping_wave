@@ -11,7 +11,6 @@ async function scrape(website_url) {
         product_a.each((i, el) => {
             url.push(`https://www.amazon.in${$(el).attr('href').trim()}`);
         })
-        
         if (url.length != 0) {
             const workerCount = 6;
             let workers = [];
